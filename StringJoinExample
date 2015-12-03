@@ -1,0 +1,63 @@
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+public class StringJoinExample {
+
+	public static void main(String[] args) {
+		
+		
+		List<String> stringList = new ArrayList<String>();
+		stringList.add("Java");stringList.add("is");
+		stringList.add("cool");
+		String message = String.join(",", stringList);  // Java 1.8
+		System.out.println(message);
+		
+		
+		List<Integer> intList = new ArrayList<Integer>();
+		intList.add(1);
+		intList.add(2);
+		intList.add(3);
+		System.out.println(StringJoin(intList));  // calling stringJoin method  and output is 1,2,3
+		
+		List<String> strList = new ArrayList<String>();		
+		strList.add("Java");
+		strList.add("is");
+		strList.add("cool");
+		
+		System.out.println(StringJoin(strList));   // calling stringJoin method  and output is Java,is,cool
+		
+				  
+		   List<?> list1 = Arrays.asList("Larry", "Moe", "Curly");		   
+		   System.out.println("The list is:" + list1); //The list is:[Larry, Moe, Curly]
+		  
+		   
+		   list1 = Arrays.asList(1, 2, 3);		   
+		   System.out.println("The list is:" + list1);  //  The list is:[1, 2, 3]
+	 
+	}
+	
+	
+	/*
+	 * Below method takes an list of generic objects and join the contents in the list with comma separated  
+	 * and convert to string  
+	 */
+
+	static <T> String  StringJoin(List<T> listObj){
+		
+		StringBuilder strbulObj  = new StringBuilder();
+	     Iterator<T> iter = listObj.iterator();
+	     while(iter.hasNext())
+	     {
+	    	 strbulObj.append(iter.next());
+	        if(iter.hasNext()){
+	        	strbulObj.append(",");
+	        }
+	     }
+	     
+		return strbulObj.toString();
+	}
+
+}
